@@ -1,21 +1,20 @@
 import React, {useEffect, useState} from 'react';
 
-const ApiPage1 = () => {
-    const [postUser, setPostUser]= useState([])
-    const link='https://dummyjson.com/posts'
-    const createPost = async () =>{
-        const response = await fetch(link)
+const ApiPage = () => {
+    const [post, setPost]= useState([])
+    const postRequest = async () =>{
+        const response = await fetch('https://dummyjson.com/posts')
         const data = await response.json()
-        setPostUser(data.posts)
+        setPost(data.posts)
     }
     useEffect(() => {
-        createPost()
+        postRequest()
     }, []);
 
     return (
         <div>
             {
-                postUser.map((el, index) =>[
+                post.map((el, index) =>[
                     <div key={index}>
                         <h2>Title: {el.title}</h2>
                         <p>{el.body}</p>
@@ -27,4 +26,4 @@ const ApiPage1 = () => {
     );
 };
 
-export default ApiPage1;
+export default ApiPage;

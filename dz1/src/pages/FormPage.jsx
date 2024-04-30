@@ -10,7 +10,6 @@ const FormPage2 = () => {
     const createPost = (e) =>{
         e.preventDefault()
         setCase([...Case, title, body])
-
     }
 
     return (
